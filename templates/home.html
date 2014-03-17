@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+    <form action="/results" method="post">
+      <div name="form_field">
+        <label for="item">Item:</label>
+        <input type="text" name="item" />
+      </div>
+      <div name="form_field">
+        <label for="Amount">Amount:</label>
+        <input type="text" name="Amount" />
+      </div>
+      <input type="submit" id="submit" value="submit" />
+    </form>
+{% endblock %}
