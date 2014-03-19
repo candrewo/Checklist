@@ -61,7 +61,7 @@ def add_entry():
     db.execute('insert into entries (title, amount, text) values (?, ?, ?)',
                  [request.form['title'], request.form['amount'], request.form['text']])
     db.commit()
-    flash('New entry was successfully posted')
+    flash('Added something else you cannot forget!')
     return redirect(url_for('show_entries'))
 
 
