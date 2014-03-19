@@ -10,6 +10,7 @@ def home():
 		item = request.form["item"]
 		amount = request.form["amount"]
 		items[item] = amount
+		json.dumps(items)
 		return render_template('home.html', items=items)
 	else:
 		return render_template('home.html', items=items)
