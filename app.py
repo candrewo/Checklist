@@ -1,19 +1,18 @@
+import sqlite3
+from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 import os
-from sqlite3 import dbapi2 as sqlite3
-from flask import Flask, request, session, g, redirect, url_for, abort, \
-     render_template, flash
 
 app = Flask(__name__)
 
 
 app.config.update(dict(
-    DATABASE=os.path.join(app.root_path, 'flaskr.db'),
+    DATABASE=os.path.join(app.root_path, 'checklist.db'),
     DEBUG=True,
     SECRET_KEY='development key',
     USERNAME='admin',
     PASSWORD='default'
 ))
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+app.config.from_envvar('CHECKLIST_SETTINGS', silent=True)
 
 
 def connect_db():
@@ -53,7 +52,7 @@ def show_entries():
     db = get_db()
     cur = db.execute('select title, amount, text from entries order by id desc')
     entries = cur.fetchall()
-    return render_template('show_entries.html', entries=entries)
+    return render_template('home.html', entries=entries)
 
 
 @app.route('/add', methods=['POST'])
