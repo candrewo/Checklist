@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-    <form action="/results" method="post">
+    <form method="post">
       <div name="form_field">
         <label for="item">Item:</label>
         <input type="text" name="item" />
@@ -11,6 +11,15 @@
       </div>
       <input type="submit" id="submit" value="submit" />
     </form>
+    <br>
+  <div>
+    These are the items you cannot forget:
+    <p>
+    {% for key, values in items.items() %}
+    <p>{{key}} : {{values}}</p>
+    {% endfor %}
+    </p>
+  </div>
 {% endblock %}
 
 <!-- add an "add more items button" that redirects to home page -->
